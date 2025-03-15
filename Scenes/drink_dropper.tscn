@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cymdg8k1rpm6t"]
+[gd_scene load_steps=6 format=3 uid="uid://cymdg8k1rpm6t"]
 
 [ext_resource type="Texture2D" uid="uid://wtgbqcu4hk2i" path="res://icon.svg" id="1_ffqh2"]
 [ext_resource type="PackedScene" uid="uid://c80fupdqmho3p" path="res://Scenes/icecube.tscn" id="2_nfdw7"]
 [ext_resource type="Script" uid="uid://d3b2oma0k8kgm" path="res://ice_bucket.gd" id="3_nfdw7"]
+[ext_resource type="PackedScene" uid="uid://kfj1sk4ln2cw" path="res://Scenes/liquid.tscn" id="4_wpxe2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_252c1"]
 size = Vector2(21, 303)
@@ -53,3 +54,6 @@ position = Vector2(484, 474)
 position = Vector2(122, 107)
 script = ExtResource("3_nfdw7")
 ice_cube = ExtResource("2_nfdw7")
+
+[node name="Liquid" parent="." instance=ExtResource("4_wpxe2")]
+position = Vector2(490, 787)

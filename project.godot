@@ -15,12 +15,20 @@ run/main_scene="uid://cymdg8k1rpm6t"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Signals="*res://Autoload/Signals.gd"
+
 [display]
 
 window/size/viewport_width=1000
 window/size/viewport_height=1000
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[global_group]
+
+Liquid="All manner of zones that cubes can float in"
 
 [rendering]
 

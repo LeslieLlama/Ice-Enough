@@ -7,6 +7,8 @@
 size = Vector2(38, 39)
 
 [node name="Icecube" type="RigidBody2D"]
+contact_monitor = true
+max_contacts_reported = 5
 linear_damp = 1.0
 script = ExtResource("1_mcmby")
 
