@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c80fupdqmho3p"]
+
+[ext_resource type="Script" uid="uid://noy20sbyuers" path="res://Scripts/icecube_basic.gd" id="1_mcmby"]
+[ext_resource type="Texture2D" uid="uid://wtgbqcu4hk2i" path="res://icon.svg" id="2_gc7vj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfdw7"]
+size = Vector2(38, 39)
+
+[node name="Icecube" type="RigidBody2D"]
+linear_damp = 1.0
+script = ExtResource("1_mcmby")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 0.5)
+scale = Vector2(0.296875, 0.304688)
+texture = ExtResource("2_gc7vj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_nfdw7")

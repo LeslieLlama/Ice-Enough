@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://cymdg8k1rpm6t"]
+
+[ext_resource type="Texture2D" uid="uid://wtgbqcu4hk2i" path="res://icon.svg" id="1_ffqh2"]
+[ext_resource type="PackedScene" uid="uid://c80fupdqmho3p" path="res://Scenes/icecube.tscn" id="2_nfdw7"]
+[ext_resource type="Script" uid="uid://d3b2oma0k8kgm" path="res://ice_bucket.gd" id="3_nfdw7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_252c1"]
+size = Vector2(21, 303)
+
+[node name="DrinkDropper" type="Node2D"]
+
+[node name="CupSide" type="StaticBody2D" parent="."]
+position = Vector2(399, 718)
+
+[node name="Sprite2D" type="Sprite2D" parent="CupSide"]
+position = Vector2(0.5, -1.5)
+scale = Vector2(0.164063, 2.32031)
+texture = ExtResource("1_ffqh2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CupSide"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_252c1")
+
+[node name="CupSide2" type="StaticBody2D" parent="."]
+position = Vector2(581, 719)
+
+[node name="Sprite2D" type="Sprite2D" parent="CupSide2"]
+position = Vector2(0.5, -1.5)
+scale = Vector2(0.164063, 2.32031)
+texture = ExtResource("1_ffqh2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CupSide2"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_252c1")
+
+[node name="CupSide3" type="StaticBody2D" parent="."]
+position = Vector2(486, 884)
+rotation = 1.57172
+
+[node name="Sprite2D" type="Sprite2D" parent="CupSide3"]
+position = Vector2(0.5, -1.5)
+scale = Vector2(0.164063, 2.32031)
+texture = ExtResource("1_ffqh2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CupSide3"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_252c1")
+
+[node name="Icecube" parent="." instance=ExtResource("2_nfdw7")]
+position = Vector2(484, 474)
+
+[node name="IceBucket" type="Node2D" parent="."]
+script = ExtResource("3_nfdw7")
+ice_cube = ExtResource("2_nfdw7")
