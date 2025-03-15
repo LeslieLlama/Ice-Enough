@@ -50,5 +50,6 @@ shape = SubResource("RectangleShape2D_252c1")
 position = Vector2(484, 474)
 
 [node name="IceBucket" type="Node2D" parent="."]
+position = Vector2(122, 107)
 script = ExtResource("3_nfdw7")
 ice_cube = ExtResource("2_nfdw7")
