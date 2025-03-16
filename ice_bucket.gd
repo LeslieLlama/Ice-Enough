@@ -2,9 +2,19 @@ extends Node2D
 
 @export var ice_cube : PackedScene
 
-func _process(delta: float) -> void:
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		var new_cube = ice_cube.instantiate()
-		new_cube.position = get_viewport().get_mouse_position()
-		add_child(new_cube)
+
 		
+func _input(event):
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT :
+			spawn_cube()
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP :
+			print("Scroll wheel up")
+		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			print("Scroll wheel down")
+
+
+func spawn_cube():
+	var new_cube = ice_cube.instantiate()
+	new_cube.global_position = get_viewport().get_mouse_position()
+	add_child(new_cube)

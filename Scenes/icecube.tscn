@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://noy20sbyuers" path="res://Scripts/icecube_basic.gd" id="1_mcmby"]
 [ext_resource type="Texture2D" uid="uid://wtgbqcu4hk2i" path="res://icon.svg" id="2_gc7vj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfdw7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mcmby"]
 size = Vector2(38, 39)
 
 [node name="Icecube" type="RigidBody2D"]
@@ -19,4 +19,19 @@ texture = ExtResource("2_gc7vj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_nfdw7")
+shape = SubResource("RectangleShape2D_mcmby")
+
+[node name="WaterHeightTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 19.0
+offset_bottom = 20.0
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="WaterHeightTimer" to="." method="_check_water_height"]

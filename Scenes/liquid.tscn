@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://cu76febi0sdtq" path="res://Scripts/liquid.gd" id="1_wq03x"]
 [ext_resource type="Texture2D" uid="uid://wtgbqcu4hk2i" path="res://icon.svg" id="1_ysvft"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfdw7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wq03x"]
+resource_local_to_scene = true
 size = Vector2(158, 165)
 
 [node name="Liquid" type="Area2D" groups=["Liquid"]]
@@ -15,6 +16,11 @@ scale = Vector2(1.23437, 1.29688)
 texture = ExtResource("1_ysvft")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_nfdw7")
+shape = SubResource("RectangleShape2D_wq03x")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="update_liquid"]
