@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://tnvpk43jwemp"]
+[gd_scene load_steps=2 format=3 uid="uid://tnvpk43jwemp"]
+
+[ext_resource type="Script" uid="uid://c4uk0tq1jrj5c" path="res://Scenes/ui.gd" id="1_jxero"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jxero")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
@@ -17,13 +20,84 @@ offset_left = -225.0
 offset_right = 225.0
 offset_bottom = 217.0
 grow_horizontal = 2
+theme_override_font_sizes/font_size = 96
 text = "Ice Enough? "
 horizontal_alignment = 1
 
-[node name="Timer" type="Label" parent="."]
+[node name="TimerText" type="Label" parent="."]
 layout_mode = 1
 offset_right = 182.0
-offset_bottom = 93.0
-text = "Time : 2:00"
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 27
+text = "Time : 90"
+vertical_alignment = 1
+
+[node name="ScoreText" type="Label" parent="."]
+layout_mode = 1
+offset_top = 31.0
+offset_right = 182.0
+offset_bottom = 124.0
+theme_override_font_sizes/font_size = 27
+text = "Score: 0"
+vertical_alignment = 1
+
+[node name="HighScoreText" type="Label" parent="."]
+layout_mode = 1
+offset_top = 61.0
+offset_right = 182.0
+offset_bottom = 154.0
+theme_override_font_sizes/font_size = 27
+text = "High Score: 0"
+vertical_alignment = 1
+
+[node name="RoundTimer" type="Timer" parent="."]
+wait_time = 45.0
+one_shot = true
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 892.0
+offset_right = 594.0
+offset_bottom = 976.0
+text = "Start
+"
+
+[node name="GlassCleared_label" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.5
+offset_top = -38.5
+offset_right = 158.5
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 56
+text = "Glass Filled!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TimeUpLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.5
+offset_top = -222.0
+offset_right = 183.5
+offset_bottom = -104.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 86
+text = "Time Up!"
+
+[connection signal="timeout" from="RoundTimer" to="." method="_time_up"]
+[connection signal="button_up" from="StartButton" to="." method="_on_start_button_button_up"]

@@ -1,26 +1,50 @@
-[gd_scene load_steps=8 format=3 uid="uid://cymdg8k1rpm6t"]
+[gd_scene load_steps=15 format=3 uid="uid://cymdg8k1rpm6t"]
 
 [ext_resource type="Texture2D" uid="uid://wtgbqcu4hk2i" path="res://icon.svg" id="1_ffqh2"]
+[ext_resource type="Script" uid="uid://463xaptphl50" path="res://Scripts/cup.gd" id="1_lkagc"]
+[ext_resource type="Texture2D" uid="uid://cadv3sxgxjww1" path="res://Art/bench.png" id="1_uw43f"]
+[ext_resource type="Texture2D" uid="uid://ywm0nuss8m5y" path="res://Art/Beach.png" id="2_8vvce"]
 [ext_resource type="PackedScene" uid="uid://c80fupdqmho3p" path="res://Scenes/icecube.tscn" id="2_nfdw7"]
 [ext_resource type="Script" uid="uid://d3b2oma0k8kgm" path="res://ice_bucket.gd" id="3_nfdw7"]
 [ext_resource type="PackedScene" uid="uid://kfj1sk4ln2cw" path="res://Scenes/liquid.tscn" id="4_wpxe2"]
 [ext_resource type="PackedScene" uid="uid://tnvpk43jwemp" path="res://Scenes/ui.tscn" id="5_g2mic"]
+[ext_resource type="Texture2D" uid="uid://c3trf3gd0jew8" path="res://Art/Cup.png" id="6_okn7c"]
+[ext_resource type="Texture2D" uid="uid://cqyp2gmc86bgu" path="res://Art/CupFront.png" id="7_mkp6f"]
+[ext_resource type="Script" uid="uid://djg4eovy3vb4n" path="res://Scripts/cube_killer.gd" id="11_mkp6f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_252c1"]
 size = Vector2(21, 464.498)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2mic"]
-size = Vector2(464, 100)
+size = Vector2(464, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okn7c"]
+size = Vector2(3270, 107)
 
 [node name="DrinkDropper" type="Node2D"]
 
+[node name="BackgroundDecoration" type="Node2D" parent="."]
+
+[node name="Table" type="Sprite2D" parent="BackgroundDecoration"]
+position = Vector2(500.5, 500.5)
+scale = Vector2(0.999, 0.997)
+texture = ExtResource("1_uw43f")
+
+[node name="Table2" type="Sprite2D" parent="BackgroundDecoration"]
+position = Vector2(500.5, 500.5)
+scale = Vector2(0.999, 0.997)
+texture = ExtResource("2_8vvce")
+
 [node name="Cup3" type="Node2D" parent="."]
-position = Vector2(499, 800)
+position = Vector2(499, 702)
+script = ExtResource("1_lkagc")
+liquid = ExtResource("4_wpxe2")
 
 [node name="CupSide" type="StaticBody2D" parent="Cup3"]
 position = Vector2(-255, -30)
 
 [node name="Sprite2D" type="Sprite2D" parent="Cup3/CupSide"]
+visible = false
 position = Vector2(0.5, -1.5)
 scale = Vector2(0.164063, 2.32031)
 texture = ExtResource("1_ffqh2")
@@ -33,6 +57,7 @@ shape = SubResource("RectangleShape2D_252c1")
 position = Vector2(239, -29)
 
 [node name="Sprite2D" type="Sprite2D" parent="Cup3/CupSide2"]
+visible = false
 position = Vector2(0.5, -1.5)
 scale = Vector2(0.164063, 2.32031)
 texture = ExtResource("1_ffqh2")
@@ -46,6 +71,7 @@ position = Vector2(-5, 136)
 rotation = 1.57172
 
 [node name="Sprite2D" type="Sprite2D" parent="Cup3/CupSide3"]
+visible = false
 position = Vector2(0.5, 4.55052)
 scale = Vector2(0.164063, 3.54915)
 texture = ExtResource("1_ffqh2")
@@ -55,21 +81,39 @@ position = Vector2(1.00366, 3.99908)
 shape = SubResource("RectangleShape2D_252c1")
 
 [node name="Liquid" parent="Cup3" instance=ExtResource("4_wpxe2")]
-position = Vector2(-8, 72)
+position = Vector2(-7, 118)
 
 [node name="Sprite2D" parent="Cup3/Liquid" index="0"]
-scale = Vector2(3.64062, 0.78125)
+position = Vector2(2.5, -0.499965)
+scale = Vector2(6.58571, 0.271429)
 
 [node name="CollisionShape2D" parent="Cup3/Liquid" index="1"]
 shape = SubResource("RectangleShape2D_g2mic")
 
+[node name="CupGlass" type="Sprite2D" parent="Cup3"]
+position = Vector2(4, -39)
+texture = ExtResource("6_okn7c")
+
+[node name="CupFront" type="Sprite2D" parent="Cup3"]
+position = Vector2(4, -39)
+texture = ExtResource("7_mkp6f")
+
 [node name="IceBucket" type="Node2D" parent="."]
-position = Vector2(122, 107)
 script = ExtResource("3_nfdw7")
 ice_cube = ExtResource("2_nfdw7")
 
 [node name="UI" parent="." instance=ExtResource("5_g2mic")]
 offset_right = 1000.0
 offset_bottom = 1001.0
+
+[node name="CubeKiller" type="Area2D" parent="."]
+position = Vector2(514, 1066)
+script = ExtResource("11_mkp6f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CubeKiller"]
+position = Vector2(67, -7.5)
+shape = SubResource("RectangleShape2D_okn7c")
+
+[connection signal="body_entered" from="CubeKiller" to="CubeKiller" method="_on_body_entered"]
 
 [editable path="Cup3/Liquid"]

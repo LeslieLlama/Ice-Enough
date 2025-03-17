@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://kfj1sk4ln2cw"]
 
 [ext_resource type="Script" uid="uid://cu76febi0sdtq" path="res://Scripts/liquid.gd" id="1_wq03x"]
-[ext_resource type="Texture2D" uid="uid://wtgbqcu4hk2i" path="res://icon.svg" id="1_ysvft"]
+[ext_resource type="Texture2D" uid="uid://cpov3r5txsauv" path="res://Art/cupLiquid.png" id="2_5evbk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wq03x"]
 resource_local_to_scene = true
@@ -11,15 +11,21 @@ size = Vector2(158, 165)
 script = ExtResource("1_wq03x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.12549, 1, 1, 0.266667)
-scale = Vector2(1.23437, 1.29688)
-texture = ExtResource("1_ysvft")
+position = Vector2(0, 0.5)
+scale = Vector2(2.25714, 2.35714)
+texture = ExtResource("2_5evbk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wq03x")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="MarkerLine" type="Sprite2D" parent="."]
+modulate = Color(1, 0.384314, 0.588235, 0.32549)
+position = Vector2(0.499996, 0)
+scale = Vector2(2.24286, 0.034)
+texture = ExtResource("2_5evbk")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
